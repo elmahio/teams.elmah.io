@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>elmah.io for Microsoft Teams</title>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+      <link href="custom/css/msteams-app.css" rel="stylesheet">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	  <script src="https://statics.teams.microsoft.com/sdk/v1.0/js/MicrosoftTeams.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script src="custom/js/theme.js"></script><script src="custom/js/connectorTabConfig.js"></script>
+   </head>
+   <body>
+      <script>
+	     microsoftTeams.initialize();
+         microsoftTeams.getContext(function (context) {
+             TeamsTheme.fix(context);
+         });
+         
+         microsoftTeams.settings.registerOnSaveHandler(function(saveEvent) {
+			 console.log("Save configuration");
+			 microsoftTeams.settings.setSettings({
+              entityId: "myconfig",
+              contentUrl: "https://teams.elmah.io",
+              configName: "myconfig"
+            });
+             saveEvent.notifySuccess();
+         });
+      </script>
+      <div class="settings-container">
+         <div class="settings-section"></div>
+         <div class="section-caption">1. Get the incoming webhook URL for your Connector.</div>
+         <div class="form-field-title">
+            <div>Copy the following URL to save it to the Clipboard. You'll need this URL when you configure the connector.</div>
+         </div>
+         <p style="white-space:pre;"></p>
+         <div class="form-group"><input id="webhook" type="text" readonly><button type="button" onclick="copyWebhookToClipborad()" class="ts-btn ts-btn-primary">Copy Text</button></div>
+         <div class="section-caption">2. Install the Microsoft Teams app on elmah.io.</div>
+         <div class="form-field-title">
+            <div>Log into <a href="https://app.elmah.io/" target="_blank">elmah.io</a> and go to the log settings. Click the Apps tab. Locate the Microsoft Teams app and click the Install button. In the overlay, paste the URL from the previous step:</div>
+         </div>
+         <p style="white-space:pre;"><img src="custom/assets/teams_installapp.png" class="connector-img"></p>
+      </div>
+      <script type="text/javascript">
+	     function copyWebhookToClipborad() {
+			 var copyText = document.getElementById("webhook");
+			 copyText.select();
+			 document.execCommand("copy");
+			 if(copyText.value.length<=0)
+			 {
+				 alert("Some Error");
+			 }
+         }
+      </script>
+   </body>
+</html>
