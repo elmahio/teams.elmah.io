@@ -25,7 +25,7 @@
     "connectors": [
         {
             "connectorId": "c6e7dca0-7905-4e68-a643-0f78d157b156",
-            "configurationUrl": "https://teams.elmah.io",
+            "configurationUrl": "https://teams.elmah.io/install.html",
             "scopes": [
                 "team"
             ]
