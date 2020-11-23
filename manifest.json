@@ -1,0 +1,41 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.7",
+    "version": "1.0.2",
+    "id": "88579a1e-a40e-4ff4-ac0a-789bab11b0a1",
+    "packageName": "io.elmah.apps",
+    "developer": {
+        "name": "elmah.io",
+        "websiteUrl": "https://elmah.io",
+        "privacyUrl": "https://elmah.io/legal/teams-privacy-policy/",
+        "termsOfUseUrl": "https://elmah.io/legal/terms-of-use/"
+    },
+    "icons": {
+        "color": "color.png",
+        "outline": "outline.png"
+    },
+    "name": {
+        "short": "elmah.io"
+    },
+    "description": {
+        "short": "Post a new chat message to Microsoft Teams when errors occur on elmah.io.",
+        "full": "By using this app, integrating elmah.io with Teams requires no more than a few clicks with the mouse. Notify your team instantly, when new errors are logged on elmah.io and resolve new bugs faster."
+    },
+    "accentColor": "#0DA58E",
+    "connectors": [
+        {
+            "connectorId": "c6e7dca0-7905-4e68-a643-0f78d157b156",
+            "configurationUrl": "https://teams.elmah.io",
+            "scopes": [
+                "team"
+            ]
+        }
+    ],
+    "validDomains": [
+        "elmahioteams.blob.core.windows.net"
+    ],
+    "webApplicationInfo": {
+        "id": "0cf6235c-2ff8-4d43-9d5a-e7353a2ed509",
+        "resource": "https://app.elmah.io/account/loginmicrosoft/"
+    }
+}
