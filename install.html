@@ -24,7 +24,7 @@
          
          microsoftTeams.settings.registerOnSaveHandler(function(saveEvent) {
             console.log("registerOnSaveHandler");
-            entity = 'connector-elmahio-' + context.teamId + '-' + context.channelId;
+            entity = 'connector-elmahio';
 
             microsoftTeams.settings.setSettings({
                 entityId: entity,
