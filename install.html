@@ -20,13 +20,17 @@
          });
          
          microsoftTeams.settings.registerOnSaveHandler(function(saveEvent) {
-			 console.log("Save configuration");
-			 microsoftTeams.settings.setSettings({
-              entityId: "myconfig",
-              contentUrl: "https://teams.elmah.io/install.html",
-              configName: "myconfig"
+            microsoftTeams.getContext(function (context) {
+                url = "https://teams.elmah.io/install.html";
+                entity = 'connector-elmahio-' + context.teamId + '-' + context.channelId;
+
+                microsoftTeams.settings.setSettings({
+                    entityId: entity,
+                    contentUrl: url,
+                    configName: entity
+                });
+                saveEvent.notifySuccess();
             });
-             saveEvent.notifySuccess();
          });
       </script>
       <div class="settings-container">
