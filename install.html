@@ -20,7 +20,9 @@
          });
          
          microsoftTeams.settings.registerOnSaveHandler(function(saveEvent) {
+            console.log("registerOnSaveHandler");
             microsoftTeams.getContext(function (context) {
+                console.log("getContext");
                 url = "https://teams.elmah.io/install.html";
                 entity = 'connector-elmahio-' + context.teamId + '-' + context.channelId;
 
@@ -29,7 +31,9 @@
                     contentUrl: url,
                     configName: entity
                 });
+                console.log("setSettings");
                 saveEvent.notifySuccess();
+                console.log("notifySuccess");
             });
          });
       </script>
