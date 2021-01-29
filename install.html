@@ -10,34 +10,35 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	  <script src="https://statics.teams.microsoft.com/sdk/v1.6.0/js/MicrosoftTeams.min.js"></script>
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	  <script src="custom/js/theme.js"></script><script src="custom/js/connectorTabConfig.js"></script>
+      <script src="custom/js/theme.js"></script>
+      <script src="custom/js/connectorTabConfig.js"></script>
    </head>
    <body>
       <script>
          console.log("teams-v1.6");
-	     microsoftTeams.initialize();
-         microsoftTeams.getContext(function (context) {
-             TeamsTheme.fix(context);
-         });
+         microsoftTeams.initialize();
+         microsoftTeams.settings.setValidityState(true);
+        //  microsoftTeams.getContext(function (context) {
+        //      TeamsTheme.fix(context);
+        //  });
          
          microsoftTeams.settings.registerOnSaveHandler(function(saveEvent) {
             console.log("registerOnSaveHandler");
-            microsoftTeams.getContext(function (context) {
-                console.log("getContext");
-                entity = 'connector-elmahio-' + context.teamId + '-' + context.channelId;
+            entity = 'connector-elmahio-' + context.teamId + '-' + context.channelId;
 
-                config = {
-                    websiteUrl: "https://elmah.io",
-                    entityId: entity,
-                    contentUrl: "https://teams.elmah.io/install.html"
-                };
-                console.log("config", config);
-                microsoftTeams.settings.setSettings(config);
-                console.log("setSettings");
-                saveEvent.notifySuccess();
-                console.log("notifySuccess");
+            microsoftTeams.settings.setSettings({
+                entityId: entity,
+                contentUrl: "https://teams.elmah.io/install.html",
+                configName: entity
             });
+            console.log("setSettings");
+            saveEvent.notifySuccess();
+            console.log("notifySuccess");
          });
+         microsoftTeams.settings.registerOnRemoveHandler(function (removeEvent) {
+            var removeCalled = true;
+            alert("Removed" + JSON.stringify(removeEvent));
+        });
       </script>
       <div class="settings-container">
          <div class="settings-section"></div>
