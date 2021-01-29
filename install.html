@@ -24,14 +24,15 @@
             console.log("registerOnSaveHandler");
             microsoftTeams.getContext(function (context) {
                 console.log("getContext");
-                url = "https://teams.elmah.io/install.html";
                 entity = 'connector-elmahio-' + context.teamId + '-' + context.channelId;
 
-                microsoftTeams.settings.setSettings({
+                config = {
+                    websiteUrl: "https://elmah.io",
                     entityId: entity,
-                    contentUrl: url,
-                    configName: entity
-                });
+                    contentUrl: "https://teams.elmah.io/install.html"
+                };
+                console.log("config", config);
+                microsoftTeams.settings.setSettings(config);
                 console.log("setSettings");
                 saveEvent.notifySuccess();
                 console.log("notifySuccess");
