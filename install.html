@@ -10,35 +10,24 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	  <script src="https://statics.teams.microsoft.com/sdk/v1.0/js/MicrosoftTeams.min.js"></script>
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <script src="custom/js/theme.js"></script>
-      <script src="custom/js/connectorTabConfig.js"></script>
+	  <script src="custom/js/theme.js"></script><script src="custom/js/connectorTabConfig.js"></script>
    </head>
    <body>
       <script>
-         console.log("teams-v1.0");
-         microsoftTeams.initialize();
-         //microsoftTeams.settings.setValidityState(true);
-        //  microsoftTeams.getContext(function (context) {
-        //      TeamsTheme.fix(context);
-        //  });
+	     microsoftTeams.initialize();
+         microsoftTeams.getContext(function (context) {
+             TeamsTheme.fix(context);
+         });
          
          microsoftTeams.settings.registerOnSaveHandler(function(saveEvent) {
-            console.log("registerOnSaveHandler");
-            entity = 'connector-elmahio';
-
-            microsoftTeams.settings.setSettings({
-                entityId: entity,
-                contentUrl: "https://teams.elmah.io/install.html",
-                configName: entity
+			 console.log("Save configuration");
+			 microsoftTeams.settings.setSettings({
+              entityId: "myconfig",
+              contentUrl: "https://elmahioteams.blob.core.windows.net/connectorconfig/install.html",
+              configName: "myconfig"
             });
-            console.log("setSettings");
-            saveEvent.notifySuccess();
-            console.log("notifySuccess");
+             saveEvent.notifySuccess();
          });
-        //  microsoftTeams.settings.registerOnRemoveHandler(function (removeEvent) {
-        //     var removeCalled = true;
-        //     alert("Removed" + JSON.stringify(removeEvent));
-        // });
       </script>
       <div class="settings-container">
          <div class="settings-section"></div>
