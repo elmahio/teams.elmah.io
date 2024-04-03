@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>elmah.io for Microsoft Teams</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+        <link href="custom/css/msteams-app-v2.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="settings-container">
+            <div class="first-section mb-4">
+                <p class="section-caption">1. Get the incoming webhook URL for your Connector.</p>
+                <p class="small">Copy the following URL to save it to the Clipboard. You'll need this URL when you configure the connector.</p>
+
+                <div class="form-inline">
+                    <input id="webhook" type="text" readonly>
+                    <button type="button" onclick="copyWebhookToClipborad()" class="ts-btn ts-btn-primary">Copy URL</button>
+                </div>
+            </div>
+
+            <div class="second-section">
+                <p class="section-caption">2. Install the Microsoft Teams app on elmah.io.</p>
+                <p class="small">Log into <a href="https://app.elmah.io/" target="_blank">elmah.io</a> and go to the log settings. Click the Apps tab. Locate the Microsoft Teams app and click the Install button. In the overlay, paste the URL from the previous step:</p>
+
+                <img class="img-fluid mb-4" src="custom/assets/teams_installapp_v2.png">
+            </div>
+        </div>
+
+        <!-- Optional JavaScript; choose one of the two! -->
+        <script src="https://res.cdn.office.net/teams-js/2.17.0/js/MicrosoftTeams.min.js" integrity="sha384-xp55t/129OsN192JZYLP0rGhzjCF9aYtjY0LVtXvolkDrBe4Jchylp56NrUYJ4S2" crossorigin="anonymous"></script>
+        <script src="custom/js/theme-v2.js"></script>
+        <script src="custom/js/connector-v2.js"></script>
+    </body>
+</html>
