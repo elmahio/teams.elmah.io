@@ -11,7 +11,7 @@ microsoftTeams.app.initialize().then(() => {
     microsoftTeams.pages.config.registerOnSaveHandler((saveEvent) => {
         const configPromise = microsoftTeams.pages.config.setConfig({
             entityId: "myconfig",
-            contentUrl: "https://dev.seomat.com/teams/install.html",
+            contentUrl: "https://teams.elmah.io/installv2.html",
             configName: "myconfig"
         });
 
