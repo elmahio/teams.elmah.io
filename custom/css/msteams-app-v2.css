@@ -267,6 +267,7 @@ input, textarea {
 /* Settings area */
 .settings-container {
   margin: 0 0 0 0;
+  padding: 10px;
   max-width: 801px;
 }
 #table-pullrequests_paginate{
